@@ -40,6 +40,8 @@ button {
 #screen p {
     margin: 0;
     padding: 0;
+    max-width: 400px;
+    overflow:auto;
 }
 
 #buttons {
@@ -66,12 +68,12 @@ button {
     margin-bottom: 4%;
 }
 
-.number-button {
+.number-button, #equal-button{
     height: 100px;
     width: 100px;
 }
 
-.operator-button {
+.operator-button, #clear{
     flex-basis: 18%;
 }
 
