@@ -9,11 +9,7 @@ let num2;
 
 numberButtons.forEach(btn => {
     btn.addEventListener('click', function(e){
-        if (num1){
-            screen.textContent = e.target.textContent;
-        }else{
-            screen.textContent += e.target.textContent;
-        }
+         screen.textContent += e.target.textContent;
 
     })
 })
