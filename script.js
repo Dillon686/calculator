@@ -4,38 +4,54 @@ const clearButton = document.querySelector("#clear")
 const operatorButtons = document.querySelectorAll(".operator-button")
 const equalButton = document.querySelector("#equal-button")
 let operatorSelection = ""
-let num1 = 0;
-let num2 = 0;
+let num1;
+let num2;
 
 numberButtons.forEach(btn => {
     btn.addEventListener('click', function(e){
-        screen.textContent += e.target.textContent;
+        if (num1){
+            screen.textContent = e.target.textContent;
+        }else{
+            screen.textContent += e.target.textContent;
+        }
+
     })
 })
 
 operatorButtons.forEach(btn => {
     btn.addEventListener('click', function(e){
-        operatorSelection = btn.id;
+        /*operatorSelection = btn.id;
         num1 = parseInt(screen.textContent);
-        screen.textContent = '';
+        screen.textContent = ""*/
 
+        if (operatorSelection !== ""){
+            num2 = parseInt(screen.textContent);
+            num1 = operate(num1, num2, operatorSelection);
+            screen.textContent = num1;
+            operatorSelection = btn.id;
+            console.log(operatorSelection)
+
+        }else if (operatorSelection === ""){
+            operatorSelection = btn.id;
+            num1 = parseInt(screen.textContent);
+            screen.textContent = "";
+        }
     })
 })
+
+equalButton.addEventListener('click', function(){
+    num2 = parseInt(screen.textContent); 
+    screen.textContent = operate(num1, num2, operatorSelection);
+    num1 = parseInt(screen.textContent);
+    num2 = 0;
+    operatorSelection = "";
+ })
 
 clearButton.addEventListener('click', function(){
     screen.textContent = "";
     num1 = 0;
     num2 = 0
     operatorSelection = ""
-})
-
-equalButton.addEventListener('click', function(){
-   num2 = parseInt(screen.textContent); 
-   if (num2 > 0){
-    screen.textContent = operate(num1, num2, operatorSelection);
-    num1 = screen.textContent;
-    num2 = 0;
-   }
 })
 
 /*Operation functions below */
