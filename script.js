@@ -6,11 +6,20 @@ const equalButton = document.querySelector("#equal-button")
 let operatorSelection = ""
 let num1;
 let num2;
+let array = []
+let formattedArrayString;
 
 numberButtons.forEach(btn => {
     btn.addEventListener('click', function(e){
-         screen.textContent += e.target.textContent;
-
+        if (num1){
+            array.unshift(e.target.textContent);
+            formattedArrayString = array.toString();
+            formattedArrayString = formattedArrayString.replaceAll(',', '');
+            screen.textContent = formattedArrayString;
+        }
+        else{
+            screen.textContent += e.target.textContent;
+        }
     })
 })
 
@@ -25,8 +34,7 @@ operatorButtons.forEach(btn => {
             num1 = operate(num1, num2, operatorSelection);
             screen.textContent = num1;
             operatorSelection = btn.id;
-            console.log(operatorSelection)
-
+            array = [];
         }else if (operatorSelection === ""){
             operatorSelection = btn.id;
             num1 = parseInt(screen.textContent);
@@ -41,6 +49,7 @@ equalButton.addEventListener('click', function(){
     num1 = parseInt(screen.textContent);
     num2 = 0;
     operatorSelection = "";
+    array = [];
  })
 
 clearButton.addEventListener('click', function(){
@@ -48,6 +57,7 @@ clearButton.addEventListener('click', function(){
     num1 = 0;
     num2 = 0
     operatorSelection = ""
+    array = [];
 })
 
 /*Operation functions below */
