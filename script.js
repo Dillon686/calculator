@@ -82,7 +82,12 @@ function multiply(a, b){
 function divide(a, b){
     let total = a;
     total /= b;
-    return total;
+
+    if (isFinite(total)){
+        return total;
+    }else {
+        return "ERROR";
+    }
 }
 
 function operate(num1, num2, operator){

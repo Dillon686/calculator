@@ -15,6 +15,7 @@ button {
     width: 460px;
     background-color: gray;
     height: 600px;
+    border-radius: 10px;
 }
 
 #screen {
