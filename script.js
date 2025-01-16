@@ -12,7 +12,7 @@ let formattedArrayString;
 numberButtons.forEach(btn => {
     btn.addEventListener('click', function(e){
         if (num1){
-            array.unshift(e.target.textContent);
+            array.push(e.target.textContent);
             formattedArrayString = array.toString();
             formattedArrayString = formattedArrayString.replaceAll(',', '');
             screen.textContent = formattedArrayString;
